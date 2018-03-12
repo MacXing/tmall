@@ -19,8 +19,28 @@ NEWSPIDER_MODULE = 'tmshop.spiders'
 #USER_AGENT = 'tmshop (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
+
 ROBOTSTXT_OBEY = True
 
+#数据库
+DATABASE={'db':'crawler','user':'root','password':'gzxiaoi',
+          'host':'localhost','charset':'utf-8'}
+
+DOWNLOADER_MIDDLEWARES={
+    'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware': 750,
+    'tmshop.middlewares.ProxyMiddleware':100,
+}
+
+#日志
+LOG_FILE='scrapy.log'
+
+#下载图片
+
+# ITEM_PIPELINES ={'scrapy.pipeline.images.ImagePipeline':1}
+# #图片的url在tiem中的字段名
+# IMAGES_URLS_FIELD = 'image in item '
+#图片存储位置
+# IMAGES_STORE=r'.'
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
 
